@@ -105,6 +105,7 @@ function registerEventListners() {
 
   deleteButton.addEventListener("click", function(evt){
      deleteEntry();
+     setLocalStorage();
   });
 
   saveButton.addEventListener("click", function(evt){
