@@ -2,7 +2,7 @@ var formContainer = document.querySelector(".formContainer");
 
 function injectForm(containerNode) {
     var buildNameWrapper = document.createElement("div");
-    buildNameWrapper.setAttribute("class", "nameWrapper");
+    buildNameWrapper.setAttribute("class", "nameWrapper fadeInLeft");
     buildNameWrapper.innerHTML = "<div class='sidebar'><input type='checkbox' class='deleteCheckbox'></div><div class='inputContainer'><p class='error firstNameError'><p class='error secondNameError'></p><label>First* <input type='text' class='firstName'></label><label>Last* <input type='text' class='lastName'></label><button class='submitName'>Submit</button><button class='resetForm'>Reset</button><p class='nameValues'></p></div>";
     containerNode.appendChild(buildNameWrapper);
 }
@@ -65,16 +65,15 @@ function setLocalStorage(){
       localStorage.setItem('firstName', JSON.stringify(firstNameArray));
       localStorage.setItem('lastName', JSON.stringify(lastNameArray));
     }
-    messaging();
   } else {
     alert("Local storage is not available.");
   }
 }
 
 function getLocalStorage() {
-  var firstNameArray = JSON.parse(localStorage.getItem("firstName"));
-  var lastNameArray = JSON.parse(localStorage.getItem("lastName"));
-  var containerNode = document.querySelector(".formContainer");
+  var firstNameArray = JSON.parse(localStorage.getItem("firstName")),
+      lastNameArray = JSON.parse(localStorage.getItem("lastName")),
+      containerNode = document.querySelector(".formContainer");
   if (firstNameArray || lastNameArray) {
     for (var count=0; count < firstNameArray.length - 1; count++) {
       injectForm(containerNode);
@@ -90,8 +89,16 @@ function getLocalStorage() {
 
 function messaging() {
   var messageing = document.querySelector(".messaging");
-  messageing.classList.remove("hide");
-  window.setTimeout(function(){messageing.classList.add("hide");},2000);
+    messageing.classList.remove("hide");
+  window.setTimeout(function(){
+    messageing.classList.remove("fadeInDown");
+    messageing.classList.add("fadeInUp");
+  },2000)
+  window.setTimeout(function(){
+    messageing.classList.add("hide");
+    messageing.classList.remove("fadeInUp");
+    messageing.classList.add("fadeInDown");
+  },3000);
 }
 
 function registerEventListners() {
@@ -110,6 +117,7 @@ function registerEventListners() {
 
   saveButton.addEventListener("click", function(evt){
      setLocalStorage();
+     messaging();
   });
 
   formContainer.addEventListener("click", function(evt){
