@@ -51,7 +51,7 @@ function handleSubmit(parentNode){
     setLocalStorage();
 }
 
-function setLocalStorage(){
+function setLocalStorage(showMessaging){
   var firstNameElement = formContainer.querySelectorAll(".firstName"),
       lastNameElement = formContainer.querySelectorAll(".lastName"),
       firstNameArray = [],
@@ -62,8 +62,11 @@ function setLocalStorage(){
       var lastName = lastNameElement[count].value;
       firstNameArray.push(firstName);
       lastNameArray.push(lastName);
-      localStorage.setItem('firstName', JSON.stringify(firstNameArray));
-      localStorage.setItem('lastName', JSON.stringify(lastNameArray));
+    }
+    localStorage.setItem('firstName', JSON.stringify(firstNameArray));
+    localStorage.setItem('lastName', JSON.stringify(lastNameArray));
+    if (typeof showMessaging === "function") {
+      showMessaging();
     }
   } else {
     alert("Local storage is not available.");
@@ -71,33 +74,37 @@ function setLocalStorage(){
 }
 
 function getLocalStorage() {
-  var firstNameArray = JSON.parse(localStorage.getItem("firstName")),
-      lastNameArray = JSON.parse(localStorage.getItem("lastName")),
-      containerNode = document.querySelector(".formContainer");
-  if (firstNameArray || lastNameArray) {
-    for (var count=0; count < firstNameArray.length - 1; count++) {
-      injectForm(containerNode);
+  if (window.localStorage) {
+    var firstNameArray = JSON.parse(localStorage.getItem("firstName")),
+        lastNameArray = JSON.parse(localStorage.getItem("lastName")),
+        containerNode = document.querySelector(".formContainer");
+    if (firstNameArray || lastNameArray) {
+      for (var i=0; i < firstNameArray.length; i++) {
+        injectForm(containerNode);
+        var firstNameInput = document.querySelectorAll(".firstName");
+        var lastNameInput = document.querySelectorAll(".lastName");
+        firstNameInput[i].value = firstNameArray[i];
+        lastNameInput[i].value = lastNameArray[i];
+      }
+      var removeExtraFormNode = document.querySelectorAll(".nameWrapper")[firstNameArray.length];
+      removeExtraFormNode.parentNode.removeChild(removeExtraFormNode)
     }
-    var firstNameInput = document.querySelectorAll(".firstName");
-    var lastNameInput = document.querySelectorAll(".lastName");
-    for (var i=0; i < firstNameArray.length; i++) {
-      firstNameInput[i].value = firstNameArray[i];
-      lastNameInput[i].value = lastNameArray[i];
-    }
+  } else {
+    alert("Local storage is not available.");
   }
 }
 
 function messaging() {
-  var messageing = document.querySelector(".messaging");
-    messageing.classList.remove("hide");
+  var message = document.querySelector(".messaging");
+    message.classList.remove("hide");
   window.setTimeout(function(){
-    messageing.classList.remove("fadeInDown");
-    messageing.classList.add("fadeInUp");
-  },2000)
+    message.classList.remove("fadeInDown");
+    message.classList.add("fadeInUp");
+  },2000);
   window.setTimeout(function(){
-    messageing.classList.add("hide");
-    messageing.classList.remove("fadeInUp");
-    messageing.classList.add("fadeInDown");
+    message.classList.add("hide");
+    message.classList.remove("fadeInUp");
+    message.classList.add("fadeInDown");
   },3000);
 }
 
@@ -116,8 +123,7 @@ function registerEventListners() {
   });
 
   saveButton.addEventListener("click", function(evt){
-     setLocalStorage();
-     messaging();
+     setLocalStorage(messaging);
   });
 
   formContainer.addEventListener("click", function(evt){
@@ -145,6 +151,3 @@ function initialize() {
 
 initialize();
 registerEventListners();
-
-
-
