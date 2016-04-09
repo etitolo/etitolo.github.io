@@ -22,8 +22,6 @@ function reset(parentNode) {
 
 function deleteEntry(){
     var deleteCheckbox = document.querySelectorAll(".deleteCheckbox:checked");
-    localStorage.removeItem('firstName');
-    localStorage.removeItem('lastName');
     for (var count=0; count < deleteCheckbox.length; count++) {
       var nameWrapper = deleteCheckbox[count].parentNode.parentNode;
       formContainer.removeChild(nameWrapper);
@@ -73,10 +71,10 @@ function setLocalStorage(showMessaging){
 
 function getLocalStorage() {
   if (window.localStorage) {
-    var jsonObject = JSON.parse(localStorage.getItem("nameWrapper")),
-        containerNode = document.querySelector(".formContainer"),
-        nameWrappers = jsonObject.length;
+    var jsonObject = JSON.parse(localStorage.getItem("nameWrapper"));
     if (jsonObject) {
+      var nameWrappers = jsonObject.length,
+          containerNode = document.querySelector(".formContainer");
       for (var i=0; i < nameWrappers; i++) {
         injectForm(containerNode);
         var firstNameInput = document.querySelectorAll(".firstName");
@@ -84,8 +82,6 @@ function getLocalStorage() {
         firstNameInput[i].value = jsonObject[i].firstName;
         lastNameInput[i].value = jsonObject[i].lastName;
       }
-      var removeExtraFormNode = document.querySelectorAll(".nameWrapper")[nameWrappers];
-      removeExtraFormNode.parentNode.removeChild(removeExtraFormNode)
     }
   } else {
     alert("Local storage is not available.");
@@ -143,7 +139,6 @@ function initialize() {
       buttonContainer = document.querySelector(".buttonContainer");
   addButton.innerHTML = "<button class=\"addName\">Add</button><button class=\"saveName\">Save</button><button class=\"deleteName\">Delete</button>";
   buttonContainer.appendChild(addButton);
-  injectForm(formContainer);
   getLocalStorage();
 }
 
