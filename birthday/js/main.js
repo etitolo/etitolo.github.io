@@ -52,19 +52,17 @@ function handleSubmit(parentNode){
 }
 
 function setLocalStorage(showMessaging){
-  var firstNameElement = formContainer.querySelectorAll(".firstName"),
-      lastNameElement = formContainer.querySelectorAll(".lastName"),
-      firstNameArray = [],
-      lastNameArray = [];
+  var nameWrappers = document.querySelectorAll('.nameWrapper'),
+      jsonObject = [];
   if (window.localStorage) {
-    for (var count=0; count < firstNameElement.length; count++) {
-      var firstName = firstNameElement[count].value;
-      var lastName = lastNameElement[count].value;
-      firstNameArray.push(firstName);
-      lastNameArray.push(lastName);
+    for(var count = 0; count < nameWrappers.length; count++){
+      var nameWrapper = nameWrappers[count];
+      var firstName = nameWrapper.querySelector('.firstName');
+      var lastName = nameWrapper.querySelector('.lastName');
+      var nameWrapperObject = { firstName: firstName.value, lastName: lastName.value };
+      jsonObject.push(nameWrapperObject);
     }
-    localStorage.setItem('firstName', JSON.stringify(firstNameArray));
-    localStorage.setItem('lastName', JSON.stringify(lastNameArray));
+    localStorage.setItem('nameWrapper', JSON.stringify(jsonObject));
     if (typeof showMessaging === "function") {
       showMessaging();
     }
@@ -75,18 +73,18 @@ function setLocalStorage(showMessaging){
 
 function getLocalStorage() {
   if (window.localStorage) {
-    var firstNameArray = JSON.parse(localStorage.getItem("firstName")),
-        lastNameArray = JSON.parse(localStorage.getItem("lastName")),
-        containerNode = document.querySelector(".formContainer");
-    if (firstNameArray || lastNameArray) {
-      for (var i=0; i < firstNameArray.length; i++) {
+    var jsonObject = JSON.parse(localStorage.getItem("nameWrapper")),
+        containerNode = document.querySelector(".formContainer"),
+        nameWrappers = jsonObject.length;
+    if (jsonObject) {
+      for (var i=0; i < nameWrappers; i++) {
         injectForm(containerNode);
         var firstNameInput = document.querySelectorAll(".firstName");
         var lastNameInput = document.querySelectorAll(".lastName");
-        firstNameInput[i].value = firstNameArray[i];
-        lastNameInput[i].value = lastNameArray[i];
+        firstNameInput[i].value = jsonObject[i].firstName;
+        lastNameInput[i].value = jsonObject[i].lastName;
       }
-      var removeExtraFormNode = document.querySelectorAll(".nameWrapper")[firstNameArray.length];
+      var removeExtraFormNode = document.querySelectorAll(".nameWrapper")[nameWrappers];
       removeExtraFormNode.parentNode.removeChild(removeExtraFormNode)
     }
   } else {
