@@ -88,6 +88,35 @@ function getLocalStorage() {
   }
 }
 
+function getRemoteRandomList(){
+  var xhttp = new XMLHttpRequest();
+  var containerNode = document.querySelector(".formContainer");
+  var orphan = document.querySelectorAll(".nameWrapper");
+  var orphanCount = orphan.length;
+  if (orphanCount > 1) {
+    for (var count=0; count < orphanCount; count++) {
+      var nameWrapper = orphan[count];
+      nameWrapper.parentNode.removeChild(nameWrapper);
+    }
+  }
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      var randomUsers = JSON.parse(xhttp.responseText);
+      var usersLength = randomUsers.info.results;
+      for (var count=0; count < usersLength; count++) {
+        injectForm(containerNode);
+        var firstNameInput = document.querySelectorAll(".firstName");
+        var lastNameInput = document.querySelectorAll(".lastName");
+        firstNameInput[count].value = randomUsers.results[count].name.first;
+        lastNameInput[count].value = randomUsers.results[count].name.last;    
+      }
+    }
+  };
+  xhttp.open("GET", "http://api.randomuser.me/?results=10", true);
+  xhttp.send();
+}
+// getRemoteRandomList()
+
 function messaging() {
   var message = document.querySelector(".messaging");
     message.classList.remove("hide");
@@ -106,6 +135,7 @@ function registerEventListners() {
   var addButton = document.querySelector(".addName");
   var deleteButton = document.querySelector(".deleteName");
   var saveButton = document.querySelector(".saveName");
+  var randomButton = document.querySelector(".randomUsers")
 
   addButton.addEventListener("click", function(evt){
      injectForm(formContainer);
@@ -118,6 +148,10 @@ function registerEventListners() {
 
   saveButton.addEventListener("click", function(evt){
      setLocalStorage(messaging);
+  });
+
+  randomButton.addEventListener("click", function(evt) {
+      getRemoteRandomList();
   });
 
   formContainer.addEventListener("click", function(evt){
@@ -136,9 +170,19 @@ function registerEventListners() {
 
 function initialize() {
   var addButton =  document.createElement("div"),
+      containerNode = document.querySelector(".formContainer"),
       buttonContainer = document.querySelector(".buttonContainer");
-  addButton.innerHTML = "<button class=\"addName\">Add</button><button class=\"saveName\">Save</button><button class=\"deleteName\">Delete</button>";
+  addButton.innerHTML = "<button class=\"addName\">Add</button><button class=\"saveName\">Save</button><button class=\"deleteName\">Delete</button><button class=\"randomUsers\">I'm Feeling Lucky</button>";
   buttonContainer.appendChild(addButton);
+  if (window.localStorage) {
+    var jsonObject = JSON.parse(localStorage.getItem("nameWrapper"));
+    if (!jsonObject || jsonObject == "") {
+      injectForm(containerNode);
+      localStorage.setItem("nameWrapper", "[]");
+      }
+    } else {
+      alert("you have no local storage")
+    }
   getLocalStorage();
 }
 
