@@ -1,10 +1,12 @@
 var formContainer = document.querySelector(".formContainer");
 
-function injectForm(containerNode) {
-    var buildNameWrapper = document.createElement("div");
-    buildNameWrapper.setAttribute("class", "nameWrapper fadeInLeft");
-    buildNameWrapper.innerHTML = "<div class='sidebar'><input type='checkbox' class='deleteCheckbox'></div><div class='inputContainer'><p class='error firstNameError'><p class='error secondNameError'></p><label>First* <input type='text' class='firstName'></label><label>Last* <input type='text' class='lastName'></label><button class='submitName'>Submit</button><button class='resetForm'>Reset</button><p class='nameValues'></p></div>";
-    containerNode.appendChild(buildNameWrapper);
+function injectForm(containerNode,firstName,lastName) {
+  var firstName = firstName || "";
+  var lastName = lastName || "";
+  var buildNameWrapper = document.createElement("div");
+  buildNameWrapper.setAttribute("class", "nameWrapper fadeInLeft");
+  buildNameWrapper.innerHTML = "<div class='sidebar'><input type='checkbox' class='deleteCheckbox'></div><div class='inputContainer'><p class='error firstNameError'><p class='error secondNameError'></p><label>First* <input type='text' value='" + firstName + "' class='firstName'></label><label>Last* <input type='text' value='" + lastName + "' class='lastName'></label><button class='submitName'>Submit</button><button class='resetForm'>Reset</button><p class='nameValues'></p></div>";
+  containerNode.appendChild(buildNameWrapper);
 }
 
 function reset(parentNode) {
@@ -21,32 +23,32 @@ function reset(parentNode) {
 }
 
 function deleteEntry(){
-    var deleteCheckbox = document.querySelectorAll(".deleteCheckbox:checked");
-    for (var count=0; count < deleteCheckbox.length; count++) {
-      var nameWrapper = deleteCheckbox[count].parentNode.parentNode;
-      formContainer.removeChild(nameWrapper);
-    }
+  var deleteCheckbox = document.querySelectorAll(".deleteCheckbox:checked");
+  for (var count=0; count < deleteCheckbox.length; count++) {
+    var nameWrapper = deleteCheckbox[count].parentNode.parentNode;
+    formContainer.removeChild(nameWrapper);
+  }
 }
 
 function handleSubmit(parentNode){
-    var firstNameElement = parentNode.querySelector(".firstName"),
-        lastNameElement = parentNode.querySelector(".lastName"),
-        errorFirstName = parentNode.querySelector(".firstNameError"),
-        errorSecondName = parentNode.querySelector(".secondNameError"),
-        firstName = firstNameElement.value,
-        lastName = lastNameElement.value;
-    if (!firstName){
-        errorFirstName.innerHTML = "Please enter your first name.";
-    } else {
-        errorFirstName.innerHTML = "";
-    }
-    if (!lastName){
-        errorSecondName.innerHTML = "Please enter your last name.";
-    } else {
-        errorSecondName.innerHTML = "";
-    }
-    parentNode.querySelector(".nameValues").innerHTML = firstName + " " + lastName;
-    setLocalStorage();
+  var firstNameElement = parentNode.querySelector(".firstName"),
+      lastNameElement = parentNode.querySelector(".lastName"),
+      errorFirstName = parentNode.querySelector(".firstNameError"),
+      errorSecondName = parentNode.querySelector(".secondNameError"),
+      firstName = firstNameElement.value,
+      lastName = lastNameElement.value;
+  if (!firstName){
+      errorFirstName.innerHTML = "Please enter your first name.";
+  } else {
+      errorFirstName.innerHTML = "";
+  }
+  if (!lastName){
+      errorSecondName.innerHTML = "Please enter your last name.";
+  } else {
+      errorSecondName.innerHTML = "";
+  }
+  parentNode.querySelector(".nameValues").innerHTML = firstName + " " + lastName;
+  setLocalStorage();
 }
 
 function setLocalStorage(showMessaging){
@@ -75,12 +77,10 @@ function getLocalStorage() {
     if (jsonObject) {
       var nameWrappers = jsonObject.length,
           containerNode = document.querySelector(".formContainer");
-      for (var i=0; i < nameWrappers; i++) {
-        injectForm(containerNode);
-        var firstNameInput = document.querySelectorAll(".firstName");
-        var lastNameInput = document.querySelectorAll(".lastName");
-        firstNameInput[i].value = jsonObject[i].firstName;
-        lastNameInput[i].value = jsonObject[i].lastName;
+      for (var count=0; count < nameWrappers; count++) {
+        var firstNameValue = jsonObject[count].firstName;
+        var lastNameValue = jsonObject[count].lastName; 
+        injectForm(containerNode,firstNameValue,lastNameValue);    
       }
     }
   } else {
@@ -93,29 +93,24 @@ function getRemoteRandomList(){
   var containerNode = document.querySelector(".formContainer");
   var orphan = document.querySelectorAll(".nameWrapper");
   var orphanCount = orphan.length;
-  if (orphanCount > 1) {
-    for (var count=0; count < orphanCount; count++) {
-      var nameWrapper = orphan[count];
-      nameWrapper.parentNode.removeChild(nameWrapper);
-    }
+  for (var count=0; count < orphanCount; count++) {
+    var nameWrapper = orphan[count];
+    nameWrapper.parentNode.removeChild(nameWrapper);
   }
   xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
+    if (xhttp.readyState === 4 && xhttp.status === 200) {
       var randomUsers = JSON.parse(xhttp.responseText);
       var usersLength = randomUsers.info.results;
       for (var count=0; count < usersLength; count++) {
-        injectForm(containerNode);
-        var firstNameInput = document.querySelectorAll(".firstName");
-        var lastNameInput = document.querySelectorAll(".lastName");
-        firstNameInput[count].value = randomUsers.results[count].name.first;
-        lastNameInput[count].value = randomUsers.results[count].name.last;    
+        var firstNameValue = randomUsers.results[count].name.first;
+        var lastNameValue = randomUsers.results[count].name.last; 
+        injectForm(containerNode,firstNameValue,lastNameValue);    
       }
     }
   };
   xhttp.open("GET", "http://api.randomuser.me/?results=10", true);
   xhttp.send();
 }
-// getRemoteRandomList()
 
 function messaging() {
   var message = document.querySelector(".messaging");
