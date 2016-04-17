@@ -1,0 +1,90 @@
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+body {
+    font-family: sans-serif;
+}
+
+.hide {
+    display: none;
+}
+
+.deleteLabel {
+    display: block;
+    text-indent: -9999px;
+    position: absolute;
+}
+
+.messaging {
+    width: 100%;
+    color: #FFF;
+    background: #000;
+    text-align: center;
+    line-height: 2;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sidebar {
+    float: left;
+}
+
+.innerEntry {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.nameLabel {
+    display: block;
+    margin: 10px;
+}
+
+.tools {
+    clear: both;
+    padding: 20px
+}
+
+.deleteCheckbox {
+    margin: 10px;
+}
+
+.entryButtons {
+    clear: both;
+    margin-left: 20px;
+}
+
+
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideOutRight {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.slideOutRight {
+  animation-name: slideOutRight;
+}
