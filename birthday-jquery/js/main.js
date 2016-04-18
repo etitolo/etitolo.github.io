@@ -1,17 +1,22 @@
-function injectForm(){
-    $(".content").append("<div class='entry'><div class='sidebar'> <label class='deleteLabel' for='deleteCheckbox'>Delete</label> <input class='deleteCheckbox' id='deleteCheckbox' type='checkbox'></div><div class='innerEntry'> <label class='nameLabel'>First <input type='text' class='firstName'></label><label class=nameLabel>Last <input type='text' class='lastName'> </label> <p class='nameValue'><span class='first'></span><span class='last'></span></p></div><div class='entryButtons'> <button class='submitName'>Submit</button> <button class='resetName'>Reset</button></div></div>");
+function injectForm(firstName,lastName){
+    var firstName = firstName || "";
+    var lastName = lastName || "";
+    $(".content").append("<div class='entry'><div class='sidebar'> <label class='deleteLabel' for='deleteCheckbox'>Delete</label> <input class='deleteCheckbox' id='deleteCheckbox' type='checkbox'></div><div class='innerEntry'> <label class='nameLabel'>First <input type='text' value='" + firstName + "' class='firstName'></label><label class=nameLabel>Last <input type='text' value='" + lastName + "' class='lastName'> </label> <p class='nameValue'><span class='first'></span><span class='last'></span></p></div><div class='entryButtons'> <button class='submitName'>Submit</button> <button class='resetName'>Reset</button></div></div>");
+    console.log(firstName);
 }
 
 function registerEventListeners() {
-    $(".content").on("click",".submitName", submitValues);
-    $(".content").on("click",".resetName", reset);
+    $("body").on("click",".submitName", submitValues);
+    $("body").on("click",".resetName", reset);
 
-    $(".addEntry").on("click",injectForm);
-    $(".saveEntries").on("click",function(){
+    $("body").on("click",".addEntry",function(){
+        injectForm();
+    });
+    $("body").on("click",".saveEntries",function(){
         setLocalStorage(messaging);
     });
-    $(".deleteEntries").on("click",deleteEntries);
-    $(".randomUser").on("click",randomUsers);
+    $("body").on("click",".deleteEntries",deleteEntries);
+    $("body").on("click",".randomUser",randomUsers);
 }
 
 function submitValues(){
@@ -51,22 +56,21 @@ function getLocalStorage(){
     if (jsonObject){
         var entryCount = jsonObject.length;
         for (var count = 0; count < entryCount; count++) {
-            injectForm();
-            $(".firstName").eq(count).val(jsonObject[count].firstName);
-            $(".lastName").eq(count).val(jsonObject[count].lastName);
-            $(".entry").eq(entryCount).remove();
+            var firstNameVal = jsonObject[count].firstName;
+            var lastNameVal = jsonObject[count].lastName
+            injectForm(firstNameVal,lastNameVal);
         }
     }
 }
 
 function randomUsers(){
-    $.getJSON('http://api.randomuser.me/?results=10', function (data) {
+    $.getJSON('http://api.randomuser.me/?results=10', function(data){
         $(".entry").remove();
         var userCount = data.info.results;
         for (var count=0; count < userCount; count++){
-            injectForm();
-            $(".firstName").eq(count).val(data.results[count].name.first);
-            $(".lastName").eq(count).val(data.results[count].name.last);
+            firstNameVal = data.results[count].name.first;
+            lastNameVal = data.results[count].name.last;
+            injectForm(firstNameVal, lastNameVal);
         }
     });
 }
@@ -79,8 +83,7 @@ function messaging(){
     }, 2000);
     window.setTimeout(function hideMessages() {
         $(".messaging").toggleClass( "hide slideOutRight" );
-    }, 3000);
-    
+    }, 3000); 
 }
 
 function deleteEntries(){
@@ -89,7 +92,11 @@ function deleteEntries(){
 }
 
 function initalize(){
-    injectForm();
+    var jsonObject = JSON.parse(localStorage.getItem("entry"));
+    if(!jsonObject || jsonObject.length < 1) {
+        injectForm();
+        localStorage.setItem("entry", "[]");
+    }
     getLocalStorage();
 }
 
