@@ -1,31 +1,42 @@
 function injectForm(firstName,lastName){
     var firstName = firstName || "";
     var lastName = lastName || "";
-    $(".content").append("<div class='entry'><div class='sidebar'> <label class='deleteLabel' for='deleteCheckbox'>Delete</label> <input class='deleteCheckbox' id='deleteCheckbox' type='checkbox'></div><div class='innerEntry'> <label class='nameLabel'>First <input type='text' value='" + firstName + "' class='firstName'></label><label class=nameLabel>Last <input type='text' value='" + lastName + "' class='lastName'> </label> <p class='nameValue'><span class='first'></span><span class='last'></span></p></div><div class='entryButtons'> <button class='submitName'>Submit</button> <button class='resetName'>Reset</button></div></div>");
-    console.log(firstName);
+    $(".content").append("<div class='entry'><div class='sidebar'> <label class='deleteLabel' for='deleteCheckbox'>Delete</label> <input class='deleteCheckbox' id='deleteCheckbox' type='checkbox'></div><div class='innerEntry'> <label class='nameLabel'>First <input type='text' value='" + firstName + "' class='firstName'></label><label class=nameLabel>Last <input type='text' value='" + lastName + "' class='lastName'> </label> <p class='nameValue'></p></div><div class='entryButtons'> <button class='submitName'>Submit</button> <button class='resetName'>Reset</button></div></div>");
 }
 
 function registerEventListeners() {
-    $("body").on("click",".submitName", submitValues);
-    $("body").on("click",".resetName", reset);
-
-    $("body").on("click",".addEntry",function(){
-        injectForm();
+    $("#contentContainer").on( "click", "button", function( event ) {
+        activeClass = $(this).attr("class");
+        switch (activeClass) {
+            case "submitName":
+                submitValues();
+                break;
+            case "resetName":
+                reset();
+                break;
+            case "addEntry":
+                injectForm();
+                break;
+            case "saveEntries":
+                setLocalStorage(messaging);
+                break;
+            case "deleteEntries":
+                deleteEntries();
+                break;
+            case "randomUser":
+                randomUsers();
+                break
+        }
     });
-    $("body").on("click",".saveEntries",function(){
-        setLocalStorage(messaging);
-    });
-    $("body").on("click",".deleteEntries",deleteEntries);
-    $("body").on("click",".randomUser",randomUsers);
 }
 
 function submitValues(){
-    $(".entry").each(function( index ) {
-        var firstName = $(".firstName").eq(index).val();
-        var lastName = $(".lastName").eq(index).val();
-        $(".first").eq(index).text(firstName);
-        $(".last").eq(index).text(" " + lastName);    
-    });
+    entryLength = $(".entry").length;
+    for (var count = 0; count < entryLength; count++) {
+        var firstName = $(".firstName").eq(count).val();
+        var lastName = $(".lastName").eq(count).val();
+        $(".nameValue").eq(count).text(firstName + " " + lastName);
+    };
 }
 
 function reset(){
@@ -36,12 +47,13 @@ function reset(){
 function setLocalStorage(showMessaging){
     var jsonObject = [];
     if (window.localStorage) {
-        $(".entry").each(function( index ) {
-            var firstName = $(".firstName").eq(index).val();
-            var lastName = $(".lastName").eq(index).val();
+        entryLength = $(".entry").length;
+        for(var count=0; count < entryLength; count++) {
+            var firstName = $(".firstName").eq(count).val();
+            var lastName = $(".lastName").eq(count).val();
             var createObject = { "firstName": firstName, "lastName": lastName };
-            jsonObject.push(createObject);
-        });
+            jsonObject.push(createObject);    
+        }
         localStorage.setItem('entry', JSON.stringify(jsonObject));
     } else {
         alert("you don't got no local storage");
@@ -76,12 +88,11 @@ function randomUsers(){
 }
 
 function messaging(){
-    $(".messaging").toggleClass( "hide slideInLeft" );
-    $(".messaging").html( "Weeeeeeeeeeeeeeeeeeeeeeeeeeee!" );
+    $(".messaging").toggleClass( "hide slideInLeft" ).html("Weeeeeeeeeeeeeeeeeeeeeeeeeeee!");
     window.setTimeout(function(){
         $(".messaging").toggleClass( "slideInLeft slideOutRight" );
     }, 2000);
-    window.setTimeout(function hideMessages() {
+    window.setTimeout(function(){
         $(".messaging").toggleClass( "hide slideOutRight" );
     }, 3000); 
 }
