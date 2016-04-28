@@ -1,0 +1,72 @@
+/* Reset */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+@font-face {
+    font-family: tradeGothic;
+    src: url(../fonts/Trade-Gothic/TradeGothicLTStd.woff);
+    font-weight:400;
+}
+
+@font-face {
+    font-family: tradeGothic;
+    src: url(../fonts/Trade-Gothic/TradeGothicLTStd-Light.woff);
+    font-weight:300;
+}
+
+@font-face {
+    font-family: tradeGothic;
+    src: url(../fonts/Trade-Gothic/TradeGothicLTStd-Bold.woff);
+    font-weight:700;
+}
+
+@font-face {
+    font-family: tradeGothicCondensed;
+    src: url(../fonts/Trade-Gothic/TradeGothicLTStd-Cn18.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: tradeGothicCondensed;
+    src: url(../fonts/Trade-Gothic/TradeGothicLTStd-Cn18Obl.woff);
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: tradeGothicCondensed;
+    src: url(../fonts/Trade-Gothic/TradeGothicLTStd-BdCn20.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: tradeGothicCondensed, Ariel, sans-serif;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 20px 0;
+    text-transform: uppercase;
+    color: #666;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1rem;
+    }
+  .content {
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .content {
+    width: auto;
+    margin: 0 10px;
+  }
+  header h1 {
+    margin: 30px 0 20px;
+  }
+}
