@@ -72,7 +72,7 @@ a {
 }
 
 dt {
-    margin: 10px 0
+    margin: 20px 0 5px;
 }
 
 @media (max-width: 600px) {
