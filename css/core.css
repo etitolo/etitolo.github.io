@@ -39,8 +39,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 }
 
 body {
-    font-family: tradeGothicCondensed, Ariel, sans-serif;
+    font-family: tradeGothicCondensed, Arial, sans-serif;
     line-height: 1.3;
+    background: #FFF url("../images/batch2_08-bw.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
 header h1 {
@@ -69,10 +71,16 @@ p {
 
 a {
     color: #4078c0;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: 1px solid;
 }
 
 dt {
-    margin: 20px 0 5px;
+    margin: 20px 0 3px;
+    font-weight: 700;
 }
 
 @media (max-width: 600px) {
