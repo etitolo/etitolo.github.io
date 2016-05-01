@@ -3531,3 +3531,33 @@ html {
 .checkout-progress-bar-step:first-child .step-label {
   margin-left: 0;
 }
+
+/* line 24, ../sass/base.sass */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* line 27, ../sass/base.sass */
+a {
+  color: #4078c0;
+}
+
+/* line 29, ../sass/base.sass */
+h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* line 33, ../sass/base.sass */
+.github, .back {
+  margin: 10px 0 5px;
+  text-align: center;
+  display: block;
+}
+
+/* line 37, ../sass/base.sass */
+.github {
+  margin: 30px 0 10px;
+}
