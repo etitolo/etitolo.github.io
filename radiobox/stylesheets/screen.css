@@ -1,0 +1,263 @@
+/* line 5, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 8, ../sass/screen.sass */
+*, *:before, *:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* line 12, ../sass/screen.sass */
+html {
+  height: 100%;
+}
+
+/* line 14, ../sass/screen.sass */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* line 44, ../sass/screen.sass */
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+}
+
+/* line 51, ../sass/screen.sass */
+.radio-box-grouping {
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  font-size: 16px;
+}
+
+/* line 62, ../sass/screen.sass */
+.radio-box-input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+@-webkit-keyframes rippleOn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.6, 0.6, 0.6);
+    transform: scale3d(0.6, 0.6, 0.6);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes rippleOn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.6, 0.6, 0.6);
+    transform: scale3d(0.6, 0.6, 0.6);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* line 90, ../sass/screen.sass */
+.radio-box-label {
+  position: relative;
+  min-width: 160px;
+  color: #000;
+  background: #FFF;
+  height: 44px;
+  display: inline-block;
+  vertical-align: middle;
+  text-transform: capitalize;
+  margin-right: 10px;
+  padding-right: 15px;
+  border-radius: 2px;
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1), border 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #d8d8d8;
+}
+/* line 115, ../sass/screen.sass */
+.radio-box-label::before {
+  content: "";
+  border: 2px solid #666;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  position: absolute;
+  left: 0.6875rem;
+  top: 50%;
+  margin-top: -0.5rem;
+}
+/* line 125, ../sass/screen.sass */
+.radio-box-label .radio-box-control {
+  position: relative;
+  display: block;
+  margin: -0.5rem 0 0 2.25rem;
+  top: 50%;
+}
+/* line 130, ../sass/screen.sass */
+.radio-box-label .radio-box-control::before, .radio-box-label .radio-box-control::after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+}
+/* line 134, ../sass/screen.sass */
+.radio-box-label .radio-box-control::before {
+  height: 1rem;
+  width: 1rem;
+  left: -1.563rem;
+  transform: scale3d(0, 0, 0);
+  transition-duration: 0.3s;
+}
+/* line 140, ../sass/screen.sass */
+.radio-box-label .radio-box-control::after {
+  left: -43.004px;
+  top: -1.125rem;
+  height: 52px;
+  width: 52px;
+  opacity: 0;
+  transform: scale3d(1.5, 1.5, 1);
+}
+
+/* line 162, ../sass/screen.sass */
+.radio-box-input:checked + .radio-box-label {
+  background: #e6e6e6;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid transparent;
+}
+/* line 171, ../sass/screen.sass */
+.radio-box-input:checked + .radio-box-label::before {
+  border-color: #315BA1;
+}
+/* line 174, ../sass/screen.sass */
+.radio-box-input:checked + .radio-box-label .radio-box-control::before, .radio-box-input:checked + .radio-box-label .radio-box-control::after {
+  transform: scale3d(0.55, 0.55, 1);
+}
+/* line 176, ../sass/screen.sass */
+.radio-box-input:checked + .radio-box-label .radio-box-control::before {
+  background: #315BA1;
+}
+/* line 178, ../sass/screen.sass */
+.radio-box-input:checked + .radio-box-label .radio-box-control::after {
+  background: #315BA1;
+  -webkit-animation: rippleOn 600ms;
+  animation: rippleOn 600ms;
+}
+/* line 182, ../sass/screen.sass */
+.radio-box-input[disabled] + .radio-box-label {
+  cursor: not-allowed;
+  border-color: #f2f2f2;
+}
+/* line 186, ../sass/screen.sass */
+.radio-box-input[disabled] + .radio-box-label::before, .radio-box-input[disabled] + .radio-box-label .radio-box-control {
+  opacity: 0.3;
+}
+
+/* line 188, ../sass/screen.sass */
+a {
+  color: #4078c0;
+}
+
+/* line 190, ../sass/screen.sass */
+h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* line 194, ../sass/screen.sass */
+.github, .back {
+  margin: 10px 0 5px;
+  text-align: center;
+  display: block;
+}
+
+/* line 198, ../sass/screen.sass */
+.github {
+  margin: 30px 0 10px;
+}
