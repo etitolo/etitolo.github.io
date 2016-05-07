@@ -100,44 +100,48 @@ a {
 }
 
 /* line 32, ../sass/screen.scss */
+.expand-collapse {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+/* line 38, ../sass/screen.scss */
 h1 {
   font-size: 2rem;
   text-align: center;
   margin: 20px 0;
 }
 
-/* line 38, ../sass/screen.scss */
+/* line 44, ../sass/screen.scss */
 .description {
   width: 500px;
   margin: 0 auto;
 }
 
-/* line 43, ../sass/screen.scss */
+/* line 49, ../sass/screen.scss */
 .links {
   width: 500px;
-  margin: 0 auto;
   text-align: center;
   padding-top: 50px;
   line-height: 2;
+  margin: 0 auto;
 }
 
-/* line 53, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .expand-collapse {
   border: 1px solid #000;
-  width: 400px;
-  margin: 0 auto;
   overflow: hidden;
-  margin-top: 40px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* line 62, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 .header {
   background: #EEE;
   padding: 10px;
   outline: 1px solid #000;
 }
-/* line 66, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 .header::before {
   content: "";
   height: 36px;
@@ -147,7 +151,7 @@ h1 {
   transition: all 0.4s ease-in-out;
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="46.588px" viewBox="0 0 36 46.588" enable-background="new 0 0 36 46.588" xml:space="preserve"><g><path d="M14.072,15.795c-0.23,0.23-0.23,0.609,0,0.838l7.409,7.403l-7.409,7.411c-0.23,0.229-0.23,0.606,0,0.838c0.229,0.231,0.608,0.231,0.839,0l7.822-7.812c0.116-0.121,0.166-0.264,0.166-0.428c0-0.146-0.05-0.31-0.166-0.425l-7.822-7.811C14.68,15.564,14.302,15.564,14.072,15.795L14.072,15.795z"/></g></svg>');
 }
-/* line 76, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 .header.expanded::before {
   content: "";
   height: 36px;
@@ -157,11 +161,11 @@ h1 {
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="46.588px" viewBox="0 0 36 46.588" enable-background="new 0 0 36 46.588" xml:space="preserve"><g><path d="M25.838,20.181c-0.218-0.219-0.579-0.219-0.798,0l-7.036,7.044l-7.042-7.044c-0.22-0.219-0.579-0.219-0.798,0c-0.22,0.22-0.22,0.578,0,0.798l7.425,7.435c0.113,0.109,0.25,0.158,0.406,0.158c0.138,0,0.293-0.049,0.403-0.158l7.424-7.435C26.057,20.759,26.057,20.399,25.838,20.181L25.838,20.181z"/></g></svg>');
 }
 
-/* line 87, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 .content-container {
   max-height: 0;
 }
-/* line 89, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 .content-container.expanded {
   -webkit-animation-name: down;
   animation-name: down;
@@ -170,14 +174,14 @@ h1 {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-/* line 97, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 .content-container.collapsed {
   animation-name: up;
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 107, ../sass/screen.scss */
 .content {
   padding: 20px;
 }
