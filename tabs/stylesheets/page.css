@@ -1,0 +1,48 @@
+/* line 2, ../sass/page.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 6, ../sass/page.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 10, ../sass/page.scss */
+body {
+  font-family: sans-serif;
+}
+
+/* line 14, ../sass/page.scss */
+a {
+  color: #4078c0;
+}
+
+/* line 18, ../sass/page.scss */
+.tabWidget {
+  margin: 30px auto 0;
+}
+
+/* line 22, ../sass/page.scss */
+.kitten {
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+
+/* line 27, ../sass/page.scss */
+header {
+  text-align: center;
+  font-size: 1.4;
+  margin-top: 30px;
+}
+/* line 31, ../sass/page.scss */
+header h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+/* line 37, ../sass/page.scss */
+.links {
+  line-height: 1.8;
+  text-align: center;
+}
