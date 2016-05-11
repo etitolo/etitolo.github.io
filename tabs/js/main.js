@@ -17,11 +17,11 @@ function tabs() {
             var removeCurrentContent = tabContent[i];
             removeCurrentContent.classList.remove("current");
         }
-
-        var tabId = $(this).attr('role');
-        $("."+tabId).addClass('current');
+        var tabId = e.currentTarget.getAttribute("role");
+        var tabSelected = document.querySelector("."+tabId);
         
         e.currentTarget.classList.add("current");
+        tabSelected.classList.add("current");
     }
 }
 tabs();
