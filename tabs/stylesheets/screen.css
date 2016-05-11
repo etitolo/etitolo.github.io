@@ -137,3 +137,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   line-height: 1.4;
   margin-bottom: 15px;
 }
+/* line 66, ../sass/screen.scss */
+.tabContent p:last-child {
+  margin-bottom: 0;
+}
