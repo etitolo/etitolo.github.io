@@ -72,13 +72,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("/gramsci/external/font-awesome/fonts/fontawesome-webfont.eot?v=4.4.0");
-  src: url("/gramsci/external/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("/gramsci/external/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("/gramsci/external/font-awesome/fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("/gramsci/external/font-awesome/fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("/gramsci/external/font-awesome/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
+  src: url("../external/font-awesome/fonts/fontawesome-webfont.eot?v=4.4.0");
+  src: url("../external/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../external/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../external/font-awesome/fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../external/font-awesome/fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../external/font-awesome/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 /* line 4, ../external/font-awesome/scss/_core.scss */
-.fa {
+.fa, .progress-bar.circle-icon-fontawesome .progress-bar-step:before, .progress-bar.circle-icon-fontawesome .progress-bar-step:after {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -163,11 +163,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 14, ../external/font-awesome/scss/_bordered-pulled.scss */
-.fa.fa-pull-left {
+.fa.fa-pull-left, .progress-bar.circle-icon-fontawesome .fa-pull-left.progress-bar-step:before, .progress-bar.circle-icon-fontawesome .fa-pull-left.progress-bar-step:after {
   margin-right: .3em;
 }
 /* line 15, ../external/font-awesome/scss/_bordered-pulled.scss */
-.fa.fa-pull-right {
+.fa.fa-pull-right, .progress-bar.circle-icon-fontawesome .fa-pull-right.progress-bar-step:before, .progress-bar.circle-icon-fontawesome .fa-pull-right.progress-bar-step:after {
   margin-left: .3em;
 }
 
@@ -183,11 +183,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 23, ../external/font-awesome/scss/_bordered-pulled.scss */
-.fa.pull-left {
+.fa.pull-left, .progress-bar.circle-icon-fontawesome .pull-left.progress-bar-step:before, .progress-bar.circle-icon-fontawesome .pull-left.progress-bar-step:after {
   margin-right: .3em;
 }
 /* line 24, ../external/font-awesome/scss/_bordered-pulled.scss */
-.fa.pull-right {
+.fa.pull-right, .progress-bar.circle-icon-fontawesome .pull-right.progress-bar-step:before, .progress-bar.circle-icon-fontawesome .pull-right.progress-bar-step:after {
   margin-left: .3em;
 }
 
@@ -248,7 +248,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 8, ../external/font-awesome/scss/_rotated-flipped.scss */
-.fa-flip-horizontal {
+.fa-flip-horizontal, .progress-bar.circle-icon-fontawesome .step-shipping.progress-bar-step:before {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
@@ -268,6 +268,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 :root .fa-rotate-180,
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
+:root .progress-bar.circle-icon-fontawesome .step-shipping.progress-bar-step:before,
 :root .fa-flip-vertical {
   filter: none;
 }
@@ -3333,11 +3334,52 @@ html {
   box-sizing: border-box;
 }
 
+/* line 18, ../sass/_skin-default.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step:before {
+  border: 1px solid #666666;
+  text-align: center;
+  display: inline-block;
+  color: #666666;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+/* line 25, ../sass/_skin-default.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step:before {
+  border-radius: 24px;
+  padding: 10px;
+  font-size: 24px;
+  font-size: 1.5rem;
+  height: 48px;
+  width: 48px;
+  position: relative;
+}
+
+/* line 14, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .step-shipping.progress-bar-step:before {
+  content: "";
+}
+/* line 14, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .step-deliveryoptions.progress-bar-step:before {
+  content: "";
+}
+/* line 14, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .step-billing.progress-bar-step:before {
+  content: "";
+}
+/* line 14, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .step-payment.progress-bar-step:before {
+  content: "";
+}
+/* line 14, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .step-conf.progress-bar-step:before {
+  content: "";
+}
+
 /* line 51, ../sass/_skin-default.sass */
-.checkout-progress-bar {
+.progress-bar {
   list-style: none;
   counter-reset: ordinal-counter;
-  margin: 20px 0;
+  margin: 60px 0;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
@@ -3349,21 +3391,21 @@ html {
 }
 @media (max-width: 992px) {
   /* line 51, ../sass/_skin-default.sass */
-  .checkout-progress-bar {
+  .progress-bar {
     font-size: 12.16px;
     font-size: 0.76rem;
   }
 }
 @media (max-width: 767px) {
   /* line 51, ../sass/_skin-default.sass */
-  .checkout-progress-bar {
+  .progress-bar {
     font-size: 10.24px;
     font-size: 0.64rem;
   }
 }
 
 /* line 75, ../sass/_skin-default.sass */
-.checkout-progress-bar-step {
+.progress-bar-step {
   float: left;
   width: 20%;
   color: rgba(0, 0, 0, 0.9);
@@ -3374,11 +3416,11 @@ html {
   text-shadow: 0 0.05em 1px #FFF;
 }
 /* line 87, ../sass/_skin-default.sass */
-.checkout-progress-bar-step a {
+.progress-bar-step a {
   color: rgba(0, 0, 0, 0.9);
 }
 /* line 89, ../sass/_skin-default.sass */
-.checkout-progress-bar-step .step-label {
+.progress-bar-step .step-label {
   line-height: 1.4;
   text-decoration: none;
   display: inline-block;
@@ -3386,57 +3428,63 @@ html {
   border-bottom: 1px solid transparent;
 }
 /* line 96, ../sass/_skin-default.sass */
-.checkout-progress-bar-step.current {
+.progress-bar-step.current {
   color: #FFF;
   background-color: #106E7E;
   text-shadow: 0 0.05em 1px #000;
 }
 /* line 101, ../sass/_skin-default.sass */
-.checkout-progress-bar-step.preceder {
+.progress-bar-step.preceder {
   background: #CCC;
   color: rgba(0, 0, 0, 0.9);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 /* line 110, ../sass/_skin-default.sass */
-.checkout-progress-bar-step.preceder .step-label:hover {
+.progress-bar-step.preceder .step-label:hover {
   border-color: rgba(0, 0, 0, 0.9);
   color: rgba(0, 0, 0, 0.9);
 }
 
-@-webkit-keyframes preceder {
-  0% {
-    -webkit-transform: translate3d(-150%, 0, 0);
-    transform: translate3d(-150%, 0, 0);
-    visibility: visible;
-  }
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+/* line 4, ../sass/_skin-circle-icon-fontawesome.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step {
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 0 7px;
 }
-@keyframes preceder {
-  0% {
-    -webkit-transform: translate3d(-150%, 0, 0);
-    transform: translate3d(-150%, 0, 0);
-    visibility: visible;
-  }
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+/* line 7, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step:first-child {
+  border-left: none;
 }
-/* line 26, ../sass/_skin-border-arrows.sass */
-.preceder, .current {
-  -webkit-animation-name: preceder;
-  animation-name: preceder;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+/* line 10, ../sass/base/_functions.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step:last-child {
+  border-right: none;
+}
+/* line 7, ../sass/_skin-circle-icon-fontawesome.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step:before, .progress-bar.circle-icon-fontawesome .progress-bar-step:after {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+/* line 11, ../sass/_skin-circle-icon-fontawesome.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step.current:before, .progress-bar.circle-icon-fontawesome .progress-bar-step.current:after {
+  border: 2px solid #FFF;
+  background-color: #106E7E;
+  color: #FFF;
+  text-shadow: none;
+}
+/* line 17, ../sass/_skin-circle-icon-fontawesome.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step.step-shipping:before, .progress-bar.circle-icon-fontawesome .progress-bar-step.step-shipping:after {
+  padding-left: 4px;
+}
+/* line 33, ../sass/_skin-circle-icon-fontawesome.sass */
+.progress-bar.circle-icon-fontawesome .progress-bar-step:before {
+  top: -5px;
 }
 
 /* line 34, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step {
+.progress-bar.ba .progress-bar-step {
   border: none;
   text-align: center;
   padding: 0;
@@ -3445,18 +3493,18 @@ html {
 }
 @media (max-width: 992px) {
   /* line 34, ../sass/_skin-border-arrows.sass */
-  .checkout-progress-bar-step {
+  .progress-bar.ba .progress-bar-step {
     line-height: 3.61842;
   }
 }
 @media (max-width: 767px) {
   /* line 34, ../sass/_skin-border-arrows.sass */
-  .checkout-progress-bar-step {
+  .progress-bar.ba .progress-bar-step {
     line-height: 4.29688;
   }
 }
 /* line 49, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step:before, .checkout-progress-bar-step:after {
+.progress-bar.ba .progress-bar-step:before, .progress-bar.ba .progress-bar-step:after {
   content: "";
   width: 0;
   height: 0;
@@ -3467,70 +3515,197 @@ html {
   z-index: 1;
 }
 /* line 58, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step:before {
+.progress-bar.ba .progress-bar-step:before {
   border-color: transparent transparent transparent #FFF;
   right: -44px;
 }
 /* line 61, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step:after {
+.progress-bar.ba .progress-bar-step:after {
   border-color: transparent transparent transparent #CCC;
   right: -34px;
   transition: border-color 0.2s ease;
 }
 /* line 66, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.current:after {
+.progress-bar.ba .progress-bar-step.current:after {
   border-color: transparent transparent transparent #106E7E;
 }
 /* line 69, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.preceder:after {
+.progress-bar.ba .progress-bar-step.preceder:after {
   border-color: transparent transparent transparent #CCC;
 }
 /* line 75, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-shipping {
+.progress-bar.ba .progress-bar-step.step-shipping {
   width: 17%;
   z-index: 4;
 }
 /* line 86, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-shipping:after {
+.progress-bar.ba .progress-bar-step.step-shipping:after {
   right: -11px;
 }
 /* line 88, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-shipping:before {
+.progress-bar.ba .progress-bar-step.step-shipping:before {
   right: -22px;
 }
 /* line 92, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-deliveryoptions {
+.progress-bar.ba .progress-bar-step.step-deliveryoptions {
   z-index: 3;
   width: 20%;
 }
 /* line 98, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-billing {
+.progress-bar.ba .progress-bar-step.step-billing {
   z-index: 2;
   width: 18%;
 }
 /* line 104, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-payment {
+.progress-bar.ba .progress-bar-step.step-payment {
   z-index: 1;
   width: 19%;
 }
 /* line 111, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step.step-confirmation {
+.progress-bar.ba .progress-bar-step.step-confirmation {
   width: 25%;
 }
 /* line 113, ../sass/_skin-border-arrows.sass */
-.ie8 .checkout-progress-bar-step.step-confirmation {
+.ie8 .progress-bar.ba .progress-bar-step.step-confirmation {
   z-index: 0;
 }
 /* line 115, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step .step-label {
+.progress-bar.ba .progress-bar-step .step-label {
   position: relative;
   z-index: 3;
   margin-left: 44px;
 }
 /* line 119, ../sass/_skin-border-arrows.sass */
-.checkout-progress-bar-step:first-child .step-label {
+.progress-bar.ba .progress-bar-step:first-child .step-label {
   margin-left: 0;
 }
+
+/* line 3, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal {
+  counter-reset: ordinal-counter;
+}
+/* line 5, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal .progress-bar-step {
+  padding: 7px 0;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #e5e5e5;
+  padding: 7px 0;
+}
+/* line 7, ../sass/base/_functions.sass */
+.progress-bar.simple-ordinal .progress-bar-step:first-child {
+  border-left: none;
+}
+/* line 10, ../sass/base/_functions.sass */
+.progress-bar.simple-ordinal .progress-bar-step:last-child {
+  border-right: none;
+}
+/* line 10, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal .progress-bar-step .step-label {
+  display: block;
+}
+/* line 20, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal .progress-bar-step:before {
+  top: -3px;
+  position: relative;
+}
+
+/* line 12, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline {
+  box-shadow: none;
+  padding: 0 10% 0 6%;
+  overflow: inherit;
+}
+/* line 16, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step {
+  width: 20%;
+  background-color: transparent;
+  border-top: 1px solid #000;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 30px;
+  text-shadow: none;
+}
+@media (max-width: 767px) {
+  /* line 16, ../sass/_skin-bullet-on-keyline.sass */
+  .progress-bar.bullet-on-keyline .progress-bar-step {
+    font-size: 12px;
+    font-size: 0.75rem;
+  }
+}
+/* line 28, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.step-shipping {
+  text-align: left;
+}
+/* line 30, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.step-conf {
+  text-align: right;
+}
+/* line 32, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.current {
+  color: #000;
+  background-color: transparent;
+  font-weight: 700;
+  text-shadow: none;
+}
+/* line 38, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.current.step-shipping:before {
+  left: 0;
+}
+/* line 40, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.current.step-conf:before {
+  right: 0;
+}
+/* line 42, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.current:before {
+  content: "";
+  font-size: 16px;
+  font-size: 1rem;
+  color: #000;
+  position: absolute;
+  top: -9px;
+  left: 48%;
+  font-family: FontAwesome;
+}
+/* line 50, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.preceder {
+  background-color: #FFF;
+}
+/* line 52, ../sass/_skin-bullet-on-keyline.sass */
+.progress-bar.bullet-on-keyline .progress-bar-step.preceder a {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* line 10, ../sass/_skin-default.sass */
+.progress-bar.simple-ordinal .progress-bar-step:before {
+  content: counter(ordinal-counter,decimal) ".";
+  counter-increment: ordinal-counter;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+/* line 3, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal {
+  counter-reset: ordinal-counter;
+}
+/* line 5, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal .progress-bar-step {
+  padding: 7px 0;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #e5e5e5;
+}
+/* line 7, ../sass/base/_functions.sass */
+.progress-bar.simple-ordinal .progress-bar-step:first-child {
+  border-left: none;
+}
+/* line 10, ../sass/base/_functions.sass */
+.progress-bar.simple-ordinal .progress-bar-step:last-child {
+  border-right: none;
+}
+/* line 32, ../sass/_skin-simple-ordinal.sass */
+.progress-bar.simple-ordinal .progress-bar-step:before {
+  margin-right: 5px;
+}
+
+
 
 /* line 24, ../sass/base.sass */
 body {
@@ -3559,5 +3734,12 @@ h1 {
 
 /* line 37, ../sass/base.sass */
 .github {
-  margin: 30px 0 10px;
+  margin: 5px 0 0;
+  clear: both;
+}
+
+header p {
+  width: 500px;
+  line-height: 1.5;
+  margin: 0 auto;
 }
