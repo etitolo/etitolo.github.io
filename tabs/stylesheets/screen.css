@@ -112,7 +112,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 43, ../sass/screen.scss */
 .tabs > a.current::before {
-  background-color: #eee;
+  background-color: #f2f2f2;
   margin-bottom: -.08em;
 }
 
@@ -120,24 +120,36 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .tabContent {
   display: block;
   margin-bottom: 1em;
-  background: #eee;
+  background: #f2f2f2;
   padding: 1em;
   border-radius: .15em;
+  overflow: hidden;
 }
-/* line 57, ../sass/screen.scss */
+/* line 58, ../sass/screen.scss */
 .tabContent div {
   display: none;
 }
-/* line 60, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 .tabContent .current {
   display: inherit;
+  animation-name: fadeIn;
+  animation-duration: .3s;
 }
-/* line 63, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
 .tabContent p {
   line-height: 1.4;
   margin-bottom: 15px;
 }
-/* line 66, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 .tabContent p:last-child {
   margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
