@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <ul class="list-items">
+        <li ng-repeat="potato in potatoes.items" class="media">
+            <div class="media-left">
+                <a href="#/potato/{{potato.author_id}}" class="thumb"><img ng-src="{{potato.media.m}}" alt="{{potato.title}}"></a>
+            </div>
+            <div class="media-content">
+                <h2 class="truncate"><a class="title" href="#/potato/{{potato.author_id}}">{{potato.title}}</a></h2>
+                <p>Published: {{potato.published | date: "MMM dd, yyyy 'at' h:mma"}}</p>
+                <nav class="links">
+                    <a href="https://www.flickr.com/people/{{potato.author_id}}">{{potato.author}}</a>
+                    <a class="flickr" href="{{potato.link}}">View on Flickr</a>
+                </nav>
+            </div>
+        </li>
+    </ul>
+</div>
+

@@ -1,0 +1,41 @@
+.details {
+    max-width: 800px;
+    margin: 70px auto 10px;
+    padding: 20px;
+    background-color: #FFF;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    position: relative;
+    p {
+        line-height: 1.5;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+    .links p {
+        border-left: 1px solid #000;
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    .media-left {
+        padding-right: 20px
+    }
+    .back {
+        display: inline-block;
+        position: absolute;
+        right: 20px;
+        padding: 4px 14px;
+        color: #FFF;
+        background-color: $action;
+        text-decoration: none;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 12px 22px 12px 0;
+            border-color: transparent $action transparent transparent;
+            right: 64px;
+            top: 0;
+        }
+    }
+}

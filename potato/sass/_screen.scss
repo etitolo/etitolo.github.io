@@ -1,0 +1,34 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #FFF;
+    font-size: 1rem;
+    background-color: #F2F2F2;
+}
+
+a {
+    color: $action;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 5px 0 10px;
+}
+
+.truncate {
+    max-width: 94%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
