@@ -1,18 +1,20 @@
 function expandCollapse(){
-    var header = document.querySelector(".header");
-    var content = document.querySelector(".content-container");
+    let header = document.querySelectorAll(".header");
+    let content = document.querySelectorAll(".content-container");
     
-    header.addEventListener("click", function() {
-        window.setTimeout(function(){
-            content.classList.toggle("hide");
-        }, 500);
-        content.classList.toggle("expanded");
-        header.classList.toggle("expanded");
-        if (content.classList.contains("expanded")) {
-            content.classList.remove("collapsed");
-        } else {
-            content.classList.add("collapsed");
-        }
-    });
+    for (let i=0; i< header.length; i++) {
+        header[i].addEventListener("click", function() {
+            window.setTimeout(function(){
+                content[i].classList.toggle("hide");
+            }, 500);
+            content[i].classList.toggle("expanded");
+            header[i].classList.toggle("expanded");
+            if (content[i].classList.contains("expanded")) {
+                content[i].classList.remove("collapsed");
+            } else {
+                content[i].classList.add("collapsed");
+            }
+        });
+    };
 };
 expandCollapse();

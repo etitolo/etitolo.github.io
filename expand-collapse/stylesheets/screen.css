@@ -1,4 +1,4 @@
-/* line 5, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -103,23 +103,28 @@ a {
 .expand-collapse {
   width: 400px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 /* line 38, ../sass/screen.scss */
+.ec-first {
+  margin-top: 40px;
+}
+
+/* line 42, ../sass/screen.scss */
 h1 {
   font-size: 2rem;
   text-align: center;
   margin: 20px 0;
 }
 
-/* line 44, ../sass/screen.scss */
+/* line 48, ../sass/screen.scss */
 .description {
   width: 500px;
   margin: 0 auto;
 }
 
-/* line 49, ../sass/screen.scss */
+/* line 53, ../sass/screen.scss */
 .links {
   width: 500px;
   text-align: center;
@@ -128,20 +133,21 @@ h1 {
   margin: 0 auto;
 }
 
-/* line 59, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 .expand-collapse {
-  border: 1px solid #000;
+  border: 1px solid #666;
   overflow: hidden;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* line 65, ../sass/screen.scss */
+/* line 69, ../sass/screen.scss */
 .header {
   background: #EEE;
   padding: 10px;
-  outline: 1px solid #000;
+  outline: 1px solid #666;
+  cursor: pointer;
 }
-/* line 69, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 .header::before {
   content: "";
   height: 36px;
@@ -151,7 +157,7 @@ h1 {
   transition: all 0.4s ease-in-out;
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="46.588px" viewBox="0 0 36 46.588" enable-background="new 0 0 36 46.588" xml:space="preserve"><g><path d="M14.072,15.795c-0.23,0.23-0.23,0.609,0,0.838l7.409,7.403l-7.409,7.411c-0.23,0.229-0.23,0.606,0,0.838c0.229,0.231,0.608,0.231,0.839,0l7.822-7.812c0.116-0.121,0.166-0.264,0.166-0.428c0-0.146-0.05-0.31-0.166-0.425l-7.822-7.811C14.68,15.564,14.302,15.564,14.072,15.795L14.072,15.795z"/></g></svg>');
 }
-/* line 79, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 .header.expanded::before {
   content: "";
   height: 36px;
@@ -161,27 +167,25 @@ h1 {
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36px" height="46.588px" viewBox="0 0 36 46.588" enable-background="new 0 0 36 46.588" xml:space="preserve"><g><path d="M25.838,20.181c-0.218-0.219-0.579-0.219-0.798,0l-7.036,7.044l-7.042-7.044c-0.22-0.219-0.579-0.219-0.798,0c-0.22,0.22-0.22,0.578,0,0.798l7.425,7.435c0.113,0.109,0.25,0.158,0.406,0.158c0.138,0,0.293-0.049,0.403-0.158l7.424-7.435C26.057,20.759,26.057,20.399,25.838,20.181L25.838,20.181z"/></g></svg>');
 }
 
-/* line 90, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 .content-container {
   max-height: 0;
-}
-/* line 92, ../sass/screen.scss */
-.content-container.expanded {
-  -webkit-animation-name: down;
-  animation-name: down;
-  -webkit-animation-duration: .5s;
+  animation-name: up;
   animation-duration: .5s;
-  -webkit-animation-fill-mode: both;
+}
+/* line 99, ../sass/screen.scss */
+.content-container.expanded {
+  animation-name: down;
+  animation-duration: .5s;
   animation-fill-mode: both;
 }
-/* line 100, ../sass/screen.scss */
+/* line 104, ../sass/screen.scss */
 .content-container.collapsed {
   animation-name: up;
-  -webkit-animation-duration: .5s;
   animation-duration: .5s;
 }
 
-/* line 107, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 .content {
   padding: 20px;
 }
